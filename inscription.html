@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Doxa Gestion - Inscription</title>
+    <style>
+      /* Styles CSS pour la mise en page */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #008080;
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+      h1 {
+        margin: 0;
+      }
+      main {
+        margin: 20px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+      }
+      input[type="submit"] {
+        background-color: #008080;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #005353;
+      }
+      .error {
+        color: red;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Doxa Gestion</h1>
+      <p>Inscription</p>
+    </header>
+    <main>
+      <form action="https://docs.google.com/forms/d/e/1FAIpQLSfIv9k1WwvVZzP5z6c2cMwVwPzvOQ9z2yO3z2t1KpKPOY6k-w/formResponse" method="post" target="_blank">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="entry.1234567890" required>
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="entry.0987654321" required>
+        <label for="email">Adresse mail :</label>
+        <input type="email" id="email" name="entry.1357908642" required>
+        <label for="username">Nom d'utilisateur :</label>
+        <input type="text" id="username" name="entry.2468013579" required>
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="entry.9753108642" required>
+        <label for="confirm-password">Confirmer le mot de passe :</label>
+        <input type="password" id="confirm-password" name="entry.8642097531" required>
+        <div id="password-error" class="error" style="display: none;">Les mots de passe ne correspondent pas.</div>
+        <input type="submit" value="S'inscrire">
+      </form>
+    </main>
+    <script>
+      // Vérifie que les mots de passe correspondent lors de la soumission du formulaire
+      const form = document.querySelector('form');
+      const password = document.getElementById('password');
+      const confirmPassword = document.getElementById('confirm-password');
+      const passwordError = document.getElementById('password-error');
+      form.addEventListener('submit', (event) => {
+        if (password.value !== confirmPassword.value) {
+          event.preventDefault();
+          passwordError.style.display = 'block';
+        } else {
+          passwordError.style.display = 'none';
+        }
+      });
+    </script>
+  </body>
+</html>
